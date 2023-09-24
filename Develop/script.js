@@ -1,15 +1,16 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
 $(document).ready()
+
+dayjs().format('HH')
+
+$('#currentDay').text(dayjs().format('dddd, MMMM DD, YYYY'))
 
 renderSchedule()
 
 
-$('.saveBtn').on('click',function() {
+$('.saveBtn').on('click',function() { //button clicky
     // console.log($(this).parent().attr('id'))
     // console.log($(this).siblings('textarea').val())
-    localStorage.setItem($(this).parent().attr('id'), $(this).siblings('textarea').val())
+    localStorage.setItem($(this).parent().attr('id'), $(this).siblings('textarea').val()) //sets localStorage based on the button's parent's div id and what's in the button's sibling's text box
 })
 
 function renderSchedule() {
@@ -30,10 +31,3 @@ function renderSchedule() {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
-// });
