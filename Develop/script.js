@@ -1,11 +1,13 @@
 $(document).ready()
 
-dayjs().format('HH')
+// dayjs().format('HH')
 
 $('#currentDay').text(dayjs().format('dddd, MMMM DD, YYYY'))
 
-renderSchedule()
+var hourID = ['hour-9', 'hour-10', 'hour-11', 'hour-12', 'hour-13', 'hour-14', 'hour-15', 'hour-16', 'hour-17']
 
+renderSchedule()
+colorChange()
 
 $('.saveBtn').on('click',function() { //button clicky
     // console.log($(this).parent().attr('id'))
@@ -14,7 +16,6 @@ $('.saveBtn').on('click',function() { //button clicky
 })
 
 function renderSchedule() {
-  var hourID = ['hour-9', 'hour-10', 'hour-11', 'hour-12', 'hour-13', 'hour-14', 'hour-15', 'hour-16', 'hour-17'] //array to establish keys according to the div id's
   // console.log(localStorage.getItem(hourClass[2]))
   for(i = 0; i < hourID.length; i++) {
   // console.log(hourID[i])
@@ -26,8 +27,25 @@ function renderSchedule() {
   }
 }
 
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
+function colorChange() {
+  var currentHour = dayjs().format('HH')
+  // console.log(currentHour)
+  for (i = 0; i < hourID.length; i++) {
+    var hourInt = hourID[i].replace(/\D/g, '') //removes the text from the hourID indices and leaves a number string for comparison
+    console.log(hourInt)
+    if (hourInt == currentHour) { //compares to check if the hourInt is the current hour
+      $(document.body.children[1].children[i]).addClass('present')
+      $(document.body.children[1].children[i]).removeClass('past future')
+      
+    } else if (hourInt > currentHour) { //checks to see if the not current hour than the current hour (ie in the future)
+      $(document.body.children[1].children[i]).addClass('future')
+      $(document.body.children[1].children[i]).removeClass('past present')
+
+    } else { //otherwise returns that the hour is in the past
+      $(document.body.children[1].children[i]).addClass('past')
+      $(document.body.children[1].children[i]).removeClass('present future')
+    
+    
+    }
+  }
+}
