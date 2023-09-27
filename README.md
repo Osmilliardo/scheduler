@@ -9,3 +9,8 @@ This project was made to help keep individuals, like myself, who may occassional
 
 I made mention on the last challenge that I had some trouble understanding some of how to use javascript. A lot of this project was making sense of those things that I didn't quite get, there was a lot of "Aha!" moments that gave me a considerable amount more confidence in javascript as I move forward.
 
+https://github.com/Osmilliardo/scheduler
+
+https://osmilliardo.github.io/scheduler/
+
+![Alt text](./assets/schedule1.png)
